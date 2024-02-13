@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insert title here</title>
+
+<style>
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Roboto, sans-serif;
+	margin: 20px;
+	min-height: 100vh;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	background: url(https://static.stacker.com/s3fs-public/styles/sar_screen_maximum_large/s3/2019-05/00000779_3.png);
+	color: #333; /* Default text color */
+	background-size: cover,contain;
+}
+
+.imgBx {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.player {
+	width: 300px;
+	background: #fff;
+	padding: 20px 14px 8px 14px;
+	border: none;
+	border-radius: 10px;
+	box-shadow: 10px 2px 90px -11px rgba(13, 100, 76, 0.75);
+	-webkit-box-shadow: 10px 2px 90px -11px rgba(13, 100, 76, 0.75);
+	-moz-box-shadow: 10px 2px 90px -11px rgba(13, 100, 76, 0.75);
+}
+
+.imgBx img {
+	width: 50%;
+	height: auto;
+	border: none;
+	border-radius: 10px;
+}
+
+.player audio {
+	width: 100%;
+	border-radius: 6px;
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+thead {
+  background-color: #1dd1a1;
+  color: white;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+tbody tr:hover {
+  background-color: #ddd;
+}
+
+tbody td audio {
+  width: 80%; /* Adjust the width of the audio player */
+  display: block;
+  margin: 10px auto;
+}
+</style>
+</head>
+<body>
+
+	<div class="imgBx">
+		<img
+			src="https://assets-in.bmscdn.com/discovery-catalog/events/et00301886-dbzfxeatbe-landscape.jpg"
+			alt="salaar">
+		<table border>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Artist</th>
+					<th>Genre</th>
+					<th>Play</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="song:${songs}">
+					<td th:text="${song.name}"></td>
+					<td th:text="${song.artist}"></td>
+					<td th:text="${song.genre}"></td>
+					<td><audio controls>
+							<source th:src="${song.link}" type="audio/mpeg" />
+						</audio></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+</html>
